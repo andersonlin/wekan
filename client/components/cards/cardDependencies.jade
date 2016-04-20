@@ -54,7 +54,7 @@ template(name="dependencyCard")
           .dependencyCard-label(class="card-label-{{color}}" title="{{name}}")  
     a.dependencyCard-title-bar.js-remove-dependency
       .dependencyCard-title
-        | {{card.board.title}} - {{card.title}}
+        | {{card.board.title}} / {{card.title}} [{{card.list.title}}]
       .dependencyCard-remove
         i.fa.fa-times
     if card.members
