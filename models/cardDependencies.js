@@ -9,7 +9,7 @@ CardDependencies.attachSchema(new SimpleSchema({
   },
   boardId: {
     type: String,
-  }, 
+  },
   isFinished: {
     type: Boolean,
     optional: true,

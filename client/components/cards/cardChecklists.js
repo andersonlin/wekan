@@ -3,16 +3,16 @@ BlazeComponent.extendComponent({
     evt.stopPropagation();
     evt.preventDefault();
     const isFinished = !this.currentData().isFinished;
-    if (isFinished != null) {
+    if (isFinished !== null) {
       CardChecklists.update(this.currentData()._id, {
         $set: {
-          isFinished: isFinished,
+          isFinished,
           finishedAt: new Date(),
         },
       });
     }
   },
-  
+
   updateChecklistItemText(evt) {
     evt.preventDefault();
     const text = this.currentComponent().getValue().trim();
@@ -20,17 +20,17 @@ BlazeComponent.extendComponent({
       const checklistId = this.currentData()._id;
       CardChecklists.update(checklistId, {
         $set: {
-          text: text,
+          text
         },
       });
     }
   },
-  
+
   removeChecklistItem() {
     const checklistId = this.currentData()._id;
     CardChecklists.remove(checklistId);
   },
-  
+
   addChecklistItem(evt) {
     evt.preventDefault();
     const text = this.currentComponent().getValue().trim();
@@ -43,7 +43,7 @@ BlazeComponent.extendComponent({
       });
     }
   },
-  
+
   events() {
     return [{
       'click .js-toggle-multi-selection': this.toggleSelection,

@@ -95,6 +95,12 @@ Cards.helpers({
     return _.contains(this.members, memberId);
   },
 
+  dependencies() {
+    const dependsOnCards = CardChecklists.find({ cardId: this._id }, { sort: { createdAt: 1 }});
+    const dependedByCards = CardChecklists.find({ cardDependencyId: this._id }, { sort: { createdAt: 1 }});
+    return _.union(dependsOnCards, dependedByCards);
+  },
+
   checklists() {
     return CardChecklists.find({ cardId: this._id }, { sort: { createdAt: 1 }});
   },

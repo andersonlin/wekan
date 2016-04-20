@@ -3,11 +3,11 @@ Meteor.publish('lists', function() {
   // array to tell the client to remove the previously published docs.
   if (!Match.test(this.userId, String))
     return [];
-  
+
   const {starredBoards = []} = Users.findOne(this.userId).profile;
   check(starredBoards, [String]);
-  
-  var _boards = Boards.find({
+
+  let _boards = Boards.find({
     archived: false,
     $or: [
       {
@@ -21,10 +21,10 @@ Meteor.publish('lists', function() {
       _id: 1,
     },
   }).fetch();
-  
+
   return Lists.find({
     archived: false,
-    boardId: {$in: _.pluck(_boards,'_id')},
+    boardId: {$in: _.pluck(_boards, '_id')},
   }, {
     fields: {
       _id: 1,

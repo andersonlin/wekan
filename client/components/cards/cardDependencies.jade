@@ -42,7 +42,7 @@ template(name="cardsByListId")
 
 template(name="cardDependencyPanel")
   h3.card-details-item-title {{_ cardDependencyType}}
-  each dependencies
+  each dependencies cardDependencyType
     +dependencyCard(this)
   +addCardDependencies(cardDependencyType=cardDependencyType)
   
