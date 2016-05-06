@@ -45,7 +45,7 @@ BlazeComponent.extendComponent({
       start(evt, ui) {
         ui.placeholder.height(ui.helper.height());
         EscapeActions.executeUpTo('popup');
-        boardComponent.setIsDragging(true);
+        boardComponent.setIsDragging((navigator && !navigator.userAgent.toLowerCase().indexOf('mobile')));
       },
       stop(evt, ui) {
         // To attribute the new index number, we need to get the DOM element
