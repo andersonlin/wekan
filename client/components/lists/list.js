@@ -23,6 +23,7 @@ BlazeComponent.extendComponent({
     const $cards = this.$('.js-minicards');
     $cards.sortable({
       connectWith: '.js-minicards',
+      disabled: navigator && navigator.userAgent.toLowerCase().indexOf('mobile') > -1,
       tolerance: 'pointer',
       appendTo: 'body',
       helper(evt, item) {
@@ -45,7 +46,7 @@ BlazeComponent.extendComponent({
       start(evt, ui) {
         ui.placeholder.height(ui.helper.height());
         EscapeActions.executeUpTo('popup');
-        boardComponent.setIsDragging((navigator && !navigator.userAgent.toLowerCase().indexOf('mobile')));
+        boardComponent.setIsDragging((navigator && navigator.userAgent.toLowerCase().indexOf('mobile') < 0));
       },
       stop(evt, ui) {
         // To attribute the new index number, we need to get the DOM element
